@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@100..900&family=Prata&family=Sigmar&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  @apply bg-zinc-900 h-full overflow-x-hidden;
+}
+
+#__next {
+  @apply h-full;
+}
+
+html {
+  @apply h-full;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; 
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.nfLoader {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+.nfLoader:after {
+  content: "";
+  background-image: url(https://assets.nflxext.com/en_us/pages/wiplayer/site-spinner.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: nfLoader-spin 1.1s linear infinite;
+}
+@keyframes nfLoader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
