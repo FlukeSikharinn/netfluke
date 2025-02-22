@@ -1,6 +1,4 @@
 import React from 'react'
-import Image from "next/image";
-import profileImg from "@/public/images/fluke.jpg";
 import { FaChildReaching } from "react-icons/fa6";
 
 interface ProfileListProps {
