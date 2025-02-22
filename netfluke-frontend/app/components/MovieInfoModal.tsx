@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { IoClose, IoPlay, IoFilmOutline } from "react-icons/io5";
+import { IoClose, IoPlay } from "react-icons/io5";
 import { Movie } from "../types/types";
 import { useMovieDetail } from '../hooks/useMovieDetail';
 import Image from 'next/image';
@@ -18,7 +18,7 @@ interface MovieInfoProps {
 const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) => {
     
     const [isVisible, setIsVisible] = useState(!!visible);
-    const { movieDetails, getMovieDetailById, loading: detailLoading, error: detailError } = useMovieDetail();
+    const { movieDetails, getMovieDetailById } = useMovieDetail();
 
     useEffect(() => {
         setIsVisible(visible || false);

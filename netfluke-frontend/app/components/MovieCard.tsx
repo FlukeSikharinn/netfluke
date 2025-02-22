@@ -15,8 +15,7 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
-    
-    const [isModalVisible, setModalVisible] = useState(false);
+
     const [isShowModalHovered, setIsShowModalHovered] = useState<boolean>(false);
     const [randomTag, setRandomTag] = useState<string | null>(null);
 

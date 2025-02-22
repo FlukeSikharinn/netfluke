@@ -16,7 +16,7 @@ const ProfileList: React.FC<ProfileListProps> = ({show}) => {
             <div className='flex flex-col gap-4'>
                 <div className='px-3 group/item flex flex-row gap-3 items-center w-full'>
                     <FaChildReaching className='text-white'/>
-                    <p className='text-white text-sm '>Hi ! I'm Fluke Sikharin</p>
+                    <p className='text-white text-sm '>Hi ! I&apos;m Fluke Sikharin</p>
                 </div>
                 <div className='px-3 group/item flex flex-row gap-3 items-center w-full'>
                     <hr />
@@ -24,7 +24,7 @@ const ProfileList: React.FC<ProfileListProps> = ({show}) => {
                 </div>
                 <div className='px-3 group/item flex flex-row gap-3 items-center w-full'>
                     <hr />
-                    <p className='text-white text-sm '>I don't have a function profile. I hope you won't mind.</p>
+                    <p className='text-white text-sm '>I don&apos;t have a function profile. I hope you won&apos;t mind.</p>
                 </div>
             </div>
         </div>
