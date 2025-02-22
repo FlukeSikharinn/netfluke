@@ -17,9 +17,13 @@ export const useMovieDetail = () => {
       } else {
         setError('Failed to fetch movie details.');
       }
-    } catch (error: any) {
-      console.error('Error fetching movie details:', error);
-      setError('Error fetching movie details. Please try again later.');
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error('Error fetching home details:', error.message);
+        setError('Error fetching movie details. Please try again later.');
+      } else {
+        setError('An unknown error occurred.');
+      }
     } finally {
       setLoading(false);
     }

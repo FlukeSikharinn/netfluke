@@ -16,9 +16,13 @@ export const useHomeMovies = () => {
         } else {
           setError('Failed to fetch movie data.');
         }
-      } catch (error: any) {
-        console.error('Error fetching home movies:', error);
-        setError('Error fetching movie data. Please try again later.');
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error('Error fetching home movies:', error.message);
+          setError('Error fetching movie data. Please try again later.');
+        } else {
+          setError('An unknown error occurred.');
+        }
       } finally {
         setLoading(false);
       }
