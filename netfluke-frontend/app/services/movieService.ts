@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.NEXT_PUBLIC_NEST_BACKEND_URL || 'http://localhost:4000';
+const BASE_URL = process.env.NEXT_PUBLIC_NEST_BACKEND_URL;
 
 export const fetchHomeMovies = async () => {
     try {
