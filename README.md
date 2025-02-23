@@ -78,7 +78,7 @@ npm run start
 🔗 ดู API และทดสอบได้ที่: https://ys2bwyexkr.apidog.io
 
 Method |  Endpoint |  Description 
-: — — : | ----- | ----- |
+----- | ----- | ----- |
 GET | https://netfluke-backend.vercel.app/movies/home | ดึงรายการหนังสำหรับหน้าแรก |
 GET | https://netfluke-backend.vercel.app/movies/{id}/details | ดูรายละเอียดของหนัง |
 
