@@ -17,9 +17,9 @@ Netfluke เป็นเว็บแอปพลิเคชันที่ใ�
 │ │ ├── hooks/ # Custom Hooks 
 │ │ ├── services/ # API Calls (Axios) 
 │ │ └── types/ # Set types
-│ ├── css # style tailwind
-│ ├── layout 
-│ ├── page # main page
+│ ├── global.css # style tailwind
+│ ├── layout.tsx 
+│ ├── page.tsx # main page
 ├── 🖥️ backend (NestJS) 
 │ ├── src/ 
 │ │ ├── movies/
