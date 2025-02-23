@@ -69,7 +69,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                     />
                 </div>
                 {randomTag && randomTag === "TOP 10" && (
-                    <div className="absolute right-0 bg-red-600 text-white text-[8px] md:text-xs font-bold px-1 py-1 rounded-sm shadow-md z-40 text-center transition duration-300 delay-300 group-hover:opacity-0">
+                    <div className="absolute top-0 right-0 bg-red-600 text-white text-[8px] md:text-xs font-bold px-1 py-1 rounded-sm shadow-md z-40 text-center transition duration-300 delay-300 group-hover:opacity-0">
                         <span className='drop-shadow-lg'>TOP</span><br />
                         <span className='drop-shadow-lg'>10</span>
                     </div>
