@@ -80,7 +80,7 @@ npm run start
 Method |  Endpoint |  Description 
 ----- | ----- | ----- |
 GET | https://netfluke-backend.vercel.app/movies/home | ดึงรายการหนังสำหรับหน้าแรก |
-GET | https://netfluke-backend.vercel.app/movies/{id}/details | ดูรายละเอียดของหนัง |
+GET | https://netfluke-backend.vercel.app/movies/{id}/details | ดูรายละเอียดของหนัง ( movieId ตัวอย่างเป็นของหนังเรื่อง The Gorge : 950396) |
 
 🚀 สามารถกด "Try API" เพื่อยิง API ได้ทันที
 
