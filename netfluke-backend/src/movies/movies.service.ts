@@ -23,28 +23,29 @@ export class MoviesService {
         lastValueFrom(this.httpService.get(`${this.TMDB_BASE_URL}/tv/popular`, { params: { api_key: this.TMDB_API_KEY } })),
         lastValueFrom(this.httpService.get(`${this.TMDB_BASE_URL}/genre/movie/list`, { params: { api_key: this.TMDB_API_KEY } })),
       ]);
-
+  
       if (popularMoviesResponse.status === 'rejected') {
         console.error('Error fetching popular movies:', popularMoviesResponse.reason);
         throw new InternalServerErrorException('Failed to fetch popular movies');
       }
-
+  
       if (popularTvShowsResponse.status === 'rejected') {
         console.error('Error fetching popular TV shows:', popularTvShowsResponse.reason);
         throw new InternalServerErrorException('Failed to fetch popular TV shows');
       }
-
+  
       if (genresResponse.status === 'rejected') {
         console.error('Error fetching genres:', genresResponse.reason);
         throw new InternalServerErrorException('Failed to fetch genres');
       }
-
+  
       const popularMoviesData = popularMoviesResponse.value.data.results;
       const popularTvShowsData = popularTvShowsResponse.value.data.results;
       const genresData = genresResponse.value.data.genres;
 
-      const bannerMovie = popularMoviesData[0];
-
+      const randomIndex = Math.floor(Math.random() * popularMoviesData.length);
+      const bannerMovie = popularMoviesData[randomIndex];
+  
       const bannerVideoResponse = await lastValueFrom(
         this.httpService.get(`${this.TMDB_BASE_URL}/movie/${bannerMovie.id}/videos`, {
           params: { api_key: this.TMDB_API_KEY },
@@ -53,26 +54,28 @@ export class MoviesService {
         console.error('Error fetching banner video:', err);
         return { data: { results: [] } };
       });
-
+  
       const trailer = bannerVideoResponse.data.results?.find(
         (video) => video.type === 'Trailer' || video.type === 'Teaser'
       ) || null;
-
+  
       const genreMap = genresData.reduce((acc, genre) => {
         acc[genre.id] = genre.name;
         return acc;
       }, {});
 
-      const popularMovies = popularMoviesData.slice(1).map(movie => ({
-        ...movie,
-        genres: movie.genre_ids.map(id => genreMap[id] || 'Unknown'),
-      }));
-
+      const popularMovies = popularMoviesData
+        .filter(movie => movie.id !== bannerMovie.id)
+        .map(movie => ({
+          ...movie,
+          genres: movie.genre_ids.map(id => genreMap[id] || 'Unknown'),
+        }));
+  
       const popularTvShows = popularTvShowsData.map(tvShow => ({
         ...tvShow,
         genres: tvShow.genre_ids.map(id => genreMap[id] || 'Unknown'),
       }));
-
+  
       return {
         statusCode: 200,
         status: 'success',
@@ -87,6 +90,7 @@ export class MoviesService {
       throw new InternalServerErrorException('Error fetching home data');
     }
   }
+  
 
   async getMovieDetails(movieId: string) {
     try {
