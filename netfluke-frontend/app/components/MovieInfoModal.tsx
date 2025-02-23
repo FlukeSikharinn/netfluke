@@ -81,7 +81,7 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
                         ) : movie?.poster_path ? (
                             <div className="relative w-full h-full">
                                 <Image
-                                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    src={`https://image.tmdb.org/t/p/w500${movie.backdrop_path || movie.poster_path}`}
                                     alt={movie.title}
                                     layout="fill"
                                     objectFit="cover"

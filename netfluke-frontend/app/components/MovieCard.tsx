@@ -32,22 +32,42 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
     return (
         <div>
             <div className='group bg-zinc-900 col-span relative h-[30vw] md:h-[12vw] z-0 hover:z-10'>
-                <Image
-                    fill 
-                    className='
-                        object-cover 
-                        transition 
-                        duration-300  
-                        shadow-xl 
-                        rounded-sm 
-                        group-hover:opacity-0 
-                        group-hover:scale-110
-                        group-hover:z-10
-                        delay-300 
-                        w-full h-[12vw]' 
-                    src={`${API_IMAGE}${data.poster_path}`} alt={data.title || "Movie Poster"}
-                    onClick={() => openModal(data)}
-                />
+                <div className="sm:block md:hidden w-full h-full">
+                    <Image
+                        fill 
+                        className='
+                            object-cover 
+                            transition 
+                            duration-300  
+                            shadow-xl 
+                            rounded-sm 
+                            group-hover:opacity-0 
+                            group-hover:scale-110
+                            group-hover:z-10
+                            delay-300 
+                            w-full h-[12vw]' 
+                        src={`${API_IMAGE}${data.poster_path}`} alt={data.title || "Movie Poster"}
+                        onClick={() => openModal(data)}
+                    />
+                </div>
+                <div className="hidden md:block w-full h-full">
+                    <Image
+                        fill 
+                        className='
+                            object-cover 
+                            transition 
+                            duration-300  
+                            shadow-xl 
+                            rounded-sm 
+                            group-hover:opacity-0 
+                            group-hover:scale-110
+                            group-hover:z-10
+                            delay-300 
+                            w-full h-[12vw]' 
+                        src={`${API_IMAGE}${data.backdrop_path || data.poster_path}`} alt={data.title || "Movie Poster"}
+                        onClick={() => openModal(data)}
+                    />
+                </div>
                 {randomTag && randomTag === "TOP 10" && (
                     <div className="absolute right-0 bg-red-600 text-white text-[8px] md:text-xs font-bold px-1 py-1 rounded-sm shadow-md z-40 text-center transition duration-300 delay-300 group-hover:opacity-0">
                         <span className='drop-shadow-lg'>TOP</span><br />
@@ -84,22 +104,43 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                     '
                 >
                     <div className="relative" onClick={() => openModal(data)}>
-                        <Image  
-                            width={500}
-                            height={750}
-                            className='
-                                cursor-pointer 
-                                object-cover 
-                                transition 
-                                duration 
-                                shadow-xl 
-                                rounded-t-md 
-                                w-full 
-                                h-[12vw]
-                            ' 
-                            src={`${API_IMAGE}${data.poster_path}`} 
-                            alt={data.title || "Movie Poster"}
-                        />
+                        <div className="sm:block md:hidden w-full h-full">
+                            <Image  
+                                width={500}
+                                height={750}
+                                className='
+                                    cursor-pointer 
+                                    object-cover 
+                                    transition 
+                                    duration 
+                                    shadow-xl 
+                                    rounded-t-md 
+                                    w-full 
+                                    h-[12vw]
+                                ' 
+                                src={`${API_IMAGE}${data.poster_path}`} 
+                                alt={data.title || "Movie Poster"}
+                            />
+                        </div>
+                        <div className="hidden md:block w-full h-full">
+                            <Image  
+                                width={500}
+                                height={750}
+                                className='
+                                    cursor-pointer 
+                                    object-cover 
+                                    transition 
+                                    duration 
+                                    shadow-xl 
+                                    rounded-t-md 
+                                    w-full 
+                                    h-[12vw]
+                                ' 
+                                src={`${API_IMAGE}${data.backdrop_path || data.poster_path}`} 
+                                alt={data.title || "Movie Poster"}
+                            />
+                        </div>
+
                         <div className="absolute bottom-2 left-2 text-white text font-semibold p-2 rounded-md">
                             <p className='drop-shadow-lg'>{data.title}</p>
                         </div>
