@@ -9,7 +9,7 @@ Netfluke เป็นเว็บแอปพลิเคชันที่ใ�
 - 🛠 **CI/CD**: ใช้ **Vercel** ในการ Deploymentและใน Vercel ก็ทำ Auto Deployment ให้ ไม่ต้องมาทำ CI/CD เอง
 
 ## 🏗️ สถาปัตยกรรม (Architecture)
-
+```sh
 📂 Netfluke 
 ├── 🖥️ frontend (Next.js) 
 │ ├── app
@@ -28,7 +28,7 @@ Netfluke เป็นเว็บแอปพลิเคชันที่ใ�
 │ │ │ ├── modules/ # Feature Modules 
 │ │ ├── main.ts # Entry Point 
 │ ├── .env # Environment Variables
-
+```
 
 ## 🛠 การติดตั้ง (Installation)
 
@@ -36,8 +36,10 @@ Netfluke เป็นเว็บแอปพลิเคชันที่ใ�
 ```sh
 git clone https://github.com/FlukeSikharinn/netfluke.git
 cd netfluke
+```
 
 ### 🔹 **2. ติดตั้ง Dependencies**
+```sh
 # Frontend
 cd netfluke-frontend
 npm install
@@ -45,8 +47,10 @@ npm install
 # Backend
 cd ../netfluke-backend
 npm install
+```
 
 ### 🔹 **3. ตั้งค่า .env**
+```sh
 # Frontend
 TMDB_API_IMAGE="https://image.tmdb.org/t/p/w500"
 NEXT_PUBLIC_NEST_BACKEND_URL=YOUR_BACKEND_URL
@@ -57,8 +61,10 @@ TMDB_BASE_URL=https://api.themoviedb.org/3
 PORT=4000
 FRONTEND_URL=YOUR_FRONTEND_URL
 CORS_ORIGINS=YOUR_FRONTEND_URL,YOUR_FRONTEND_URL
+```
 
 ### 🔹 **4. รันโปรเจค**
+```sh
 # Frontend (Next.js)
 cd frontend
 npm run dev
@@ -66,7 +72,6 @@ npm run dev
 # Backend (NestJS)
 cd backend
 npm run start
-
 ```
 
 📌 Netfluke API Documentation  
@@ -80,11 +85,11 @@ GET | https://netfluke-backend.vercel.app/movies/{id}/details | ดูราย�
 🚀 สามารถกด "Try API" เพื่อยิง API ได้ทันที
 
 ##  🚀 Deployment
-Frontend: Hosted on Vercel (🔗 Netfluke)
-Backend: Hosted on Vercel (🔗 API)
+- Frontend: Hosted on Vercel (🔗 Netfluke)
+- Backend: Hosted on Vercel (🔗 API)
 
 ## 🏗 Tech Stack
-Frontend: Next.js, Tailwind CSS
-Backend: NestJS, TMDB API
-Deployment: Vercel, CI/CD
+- Frontend: Next.js, Tailwind CSS
+- Backend: NestJS, TMDB API
+- Deployment: Vercel, CI/CD
 
