@@ -12,7 +12,7 @@ import { BiCameraMovie } from "react-icons/bi";
 interface MovieInfoProps {
     visible?: boolean;
     onClose: () => void;
-    movie: Movie;
+    movie: Movie | null;
 }
 
 const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) => {
@@ -49,23 +49,26 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
         }
     }, [movieDetails, getMovieDetailById]);
 
+    if(!movie){
+        return null;
+    }
+
     return (
         <div
             className={`
                 fixed inset-0 flex justify-center items-center z-50
-                transition-opacity duration-300 ease-in-out
-                delay-1000
+                transition-opacity duration-500 ease-in-out
                 ${isVisible ? "opacity-100 bg-black bg-opacity-80" : "opacity-0 bg-black"}
                 ${isVisible ? "pointer-events-auto" : "pointer-events-none"}
                 scrollbar-hide md:mt-5
             `}
-            >
+        >
             <div
                 className={`
-                relative w-full md:max-w-7xl bg-zinc-900 rounded-lg shadow-xl
-                transition-all duration-300 transform 
-                ${isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"}
-                max-h-screen overflow-y-auto scrollbar-hide delay-1000
+                    relative w-full md:max-w-7xl bg-zinc-900 rounded-lg shadow-xl
+                    transition-all duration-500 ease-in-out transform
+                    ${isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"}
+                    max-h-screen overflow-y-auto scrollbar-hide
                 `}
             >
                 <div className="relative w-full h-[80vh]">

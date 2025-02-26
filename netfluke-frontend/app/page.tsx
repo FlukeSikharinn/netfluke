@@ -58,10 +58,7 @@ export default function Home() {
         <MovieList title="Popular TV Shows" data={movies.popularTvShows} openModal={openModal} />
       </div>
       
-      
-      {isModalVisible && selectedMovie && (
-        <MovieInfoModal visible={isModalVisible} onClose={closeModal} movie={selectedMovie} />
-      )}
+      <MovieInfoModal visible={isModalVisible} onClose={closeModal} movie={selectedMovie} />
     </>
   );
 }
