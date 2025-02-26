@@ -47,6 +47,7 @@ npm install
 # Backend
 cd ../netfluke-backend
 npm install
+npx tsc
 ```
 
 ### 🔹 **3. ตั้งค่า .env**
