@@ -67,7 +67,7 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
                 className={`
                     relative w-full md:max-w-7xl bg-zinc-900 rounded-lg shadow-xl
                     transition-all duration-500 ease-in-out transform
-                    ${isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"}
+                    ${isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"}
                     max-h-screen overflow-y-auto scrollbar-hide
                 `}
             >
