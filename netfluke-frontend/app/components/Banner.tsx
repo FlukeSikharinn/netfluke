@@ -11,7 +11,7 @@ interface BannerProps {
   openModal: (movie: Movie) => void;
 }
 
-const API_IMAGE = "https://image.tmdb.org/t/p/w500";
+const API_IMAGE = "https://image.tmdb.org/t/p/original";
 
 const Banner: React.FC<BannerProps> = ({ movie, openModal }) => {
   const [showIframe, setShowIframe] = useState(false);
