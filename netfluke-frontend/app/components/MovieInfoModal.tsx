@@ -21,6 +21,7 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
     const { movieDetails, getMovieDetailById } = useMovieDetail();
 
     useEffect(() => {
+        setHasVideo(false);
         setIsVisible(visible || false);
     }, [visible]);
 
@@ -28,12 +29,13 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
         if (movie && movie.id) {
             setTimeout(() => {
                 getMovieDetailById(String(movie.id));
-            }, 5000);
+            }, 3000);
         }
     }, [movie, getMovieDetailById]);
 
     const handleClose = useCallback(() => {
         setIsVisible(false);
+        setHasVideo(false);
         setTimeout(() => {
             onClose();
         }, 300);
@@ -154,8 +156,8 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
                             </div>
                             <div className="mt-2">
                                 {   
-                                    movieDetails ? movieDetails.cast?.slice(0, 4).map((cast, index) => (
-                                        <span key={cast.id} className="text-sm text-white">
+                                    movieDetails && hasVideo  ? movieDetails.cast?.slice(0, 4).map((cast, index) => (
+                                        <span key={`cast-${cast.id || index}-${index}`} className="text-sm text-white">
                                             {cast.name}
                                             {index !== 3 && ", "}
                                         </span>
@@ -178,8 +180,8 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
                             </button>
                             <div className="mt-2 ">
                                 {   
-                                    movieDetails ? movieDetails.crew?.slice(0, 3).map((crew, index) => (
-                                        <span key={crew.id} className="text-sm text-white">
+                                    movieDetails && hasVideo  ? movieDetails.crew?.slice(0, 3).map((crew, index) => (
+                                        <span key={`crew-${crew.id || index}-${index}`} className="text-sm text-white">
                                             {crew.name}
                                             {index !== 2 && ", "}
                                         </span>
@@ -202,8 +204,8 @@ const MovieInfoModal: React.FC<MovieInfoProps> = ({ visible, onClose, movie }) =
                             </button>
                             <div className="mt-2">
                                 {   
-                                    movieDetails ? movieDetails.genres?.slice(0, 5).map((genre, index) => (
-                                        <span key={index} className="text-md text-white">
+                                    movieDetails && hasVideo  ? movieDetails.genres?.slice(0, 5).map((genre, index) => (
+                                        <span key={genre} className="text-md text-white">
                                             {genre}
                                             {index !== 4 && ", "}
                                         </span>

@@ -48,6 +48,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                             w-full h-[12vw]' 
                         src={`${API_IMAGE}${data.poster_path}`} alt={data.title || "Movie Poster"}
                         onClick={() => openModal(data)}
+                        priority={false}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
                     />
                 </div>
                 <div className="hidden md:block w-full h-full">
@@ -66,6 +69,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                             w-full h-[12vw]' 
                         src={`${API_IMAGE}${data.backdrop_path || data.poster_path}`} alt={data.title || "Movie Poster"}
                         onClick={() => openModal(data)}
+                        priority={false}
+                        placeholder="blur"
+                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
                     />
                 </div>
                 {randomTag && randomTag === "TOP 10" && (
@@ -120,6 +126,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                                 ' 
                                 src={`${API_IMAGE}${data.poster_path}`} 
                                 alt={data.title || "Movie Poster"}
+                                priority={false}
+                                placeholder="blur"
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
                             />
                         </div>
                         <div className="hidden md:block w-full h-full">
@@ -138,6 +147,9 @@ const MovieCard: React.FC<MovieCardProps> = ({ data, openModal }) => {
                                 ' 
                                 src={`${API_IMAGE}${data.backdrop_path || data.poster_path}`} 
                                 alt={data.title || "Movie Poster"}
+                                priority={false}
+                                placeholder="blur"
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
                             />
                         </div>
 

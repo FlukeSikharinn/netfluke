@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { Movie } from "../types/types";
@@ -14,6 +14,16 @@ interface BannerProps {
 const API_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 const Banner: React.FC<BannerProps> = ({ movie, openModal }) => {
+  const [showIframe, setShowIframe] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIframe(true);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [movie]);
+
   if (!movie) {
     return (
       <div className="relative h-[56.25vw] flex justify-center items-center">
@@ -24,21 +34,38 @@ const Banner: React.FC<BannerProps> = ({ movie, openModal }) => {
 
   return (
     <div className="relative h-[65vh] md:h-[56.25vw]">
-      <div className="hidden md:block w-full h-full">
-        {movie.video ? (
-          <iframe
-            className="w-full h-full object-cover"
-            src={`https://www.youtube.com/embed/${movie.video.key}?autoplay=1&mute=1&loop=1&playlist=${movie.video.key}&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0`}
-            title={movie.title}
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
-        ) : (
-          <div className="flex justify-center items-center h-full">
-            <p className="text-white text-xl">Loading...</p>
-          </div>
-        )}
-      </div>
+      {!showIframe && (
+        <div className="hidden md:block w-full h-full">
+          <Image
+            src={`${API_IMAGE}${movie.backdrop_path}`}
+            alt={movie.title}
+            layout="fill"
+            objectFit="cover"
+            priority={false}
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
+          />
+        </div>
+      )}
+
+      {showIframe && (
+        <div className="hidden md:block w-full h-full">
+          {movie.video ? (
+            <iframe
+              className="w-full h-full object-cover"
+              src={`https://www.youtube.com/embed/${movie.video.key}?autoplay=1&mute=1&loop=1&playlist=${movie.video.key}&controls=0&disablekb=1&modestbranding=1&showinfo=0&rel=0`}
+              title={movie.title}
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+          ) : (
+            <div className="flex justify-center items-center h-full">
+              <p className="text-white text-xl">Loading...</p>
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="sm:block md:hidden w-full h-full">
         <Image
@@ -46,6 +73,9 @@ const Banner: React.FC<BannerProps> = ({ movie, openModal }) => {
           alt={movie.title}
           layout="fill"
           objectFit="cover"
+          priority={false}
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..."
         />
       </div>
       <div className="absolute -bottom-2 w-full h-[80%] bg-gradient-to-t from-zinc-900 to-transparent to-100%"></div>

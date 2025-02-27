@@ -133,7 +133,7 @@ export class MoviesService {
                 releaseDate: movie.release_date,
                 cast: credits.cast.slice(0, 10),
                 crew: credits.crew.filter(member => member.job === 'Director' || member.job === 'Producer'),
-                video: trailer ? { key: trailer.key, site: trailer.site } : null, // เพิ่มวิดีโอเข้าไป
+                video: trailer ? { key: trailer.key, site: trailer.site } : null,
             },
         };
     } catch (error) {
